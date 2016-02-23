@@ -69,4 +69,10 @@ quality=preproduction
 taskDoc=readme.txt
 taskType=HTSeq
 userid=pcarr@broadinstitute.org
+
+# ignore stderr to determine error status 
+job.error_status.stderr: false
+# use non-zero exit code to determine error status
+job.error_status.exit_value: true
+
 version=Added module documentation, improved command line args.
