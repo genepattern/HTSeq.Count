@@ -1,0 +1,17 @@
+#
+# Example job ran successfully with v. 0.4 on gpbroad server
+# Took about 5 minutes of CPU time to complete
+#
+# Input file was selected arbitrarily, this should not be used
+# as a meaningful example run
+#
+name: HTSeq.Count example with arbitrary data
+module: "HTSeq.Count"
+params:
+    samtype: "bam"
+    stranded: "yes"
+    quiet: "-q"
+    alignment.file: "http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwRepliSeq/wgEncodeUwRepliSeqBg02esG1bAlnRep1.bam"
+    feature.file: "ftp://gpftp.broadinstitute.org/module_support_files/annotation/gtf/Homo_sapiens_hg19_UCSC.gtf"
+assertions:
+        jobStatus: success
