@@ -1,0 +1,12 @@
+[ 
+{ 
+  name: "Basic",
+  hidden: false,
+  parameters: [ "samtype", "stranded", "alignment.file", "feature.file", "output.file" ]
+},
+{ 
+  name: "Advanced", 
+  hidden: true,
+  parameters: [ "order", "minaqual", "feature.type", "id.attr", "mode", "samout", "quiet" ]
+}
+]
