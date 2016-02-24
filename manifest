@@ -189,4 +189,4 @@ quality=preproduction
 taskDoc=readme.txt
 taskType=HTSeq
 userid=pcarr@broadinstitute.org
-version=Adjusted default values in drop-down parameters
+version=Published prerelease version 0.4 to the dev module repository
