@@ -1,9 +1,9 @@
 #
 # Example job ran successfully with v. 0.4 on gpbroad server
-# Took about 5 minutes of CPU time to complete
+# Took about 15 seconds of CPU time to complete
 #
 # Input file was selected arbitrarily, this should not be used
-# as a meaningful example run
+# as a meaningful example run. The warnings in the stderr.txt file are expected.
 #
 name: HTSeq.Count example with arbitrary data
 module: "HTSeq.Count"
@@ -11,7 +11,7 @@ params:
     samtype: "bam"
     stranded: "yes"
     quiet: "-q"
-    alignment.file: "http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwRepliSeq/wgEncodeUwRepliSeqBg02esG1bAlnRep1.bam"
-    feature.file: "ftp://gpftp.broadinstitute.org/module_support_files/annotation/gtf/Homo_sapiens_hg19_UCSC.gtf"
+    alignment.file: "e_coli_ensemble.accepted_hits.bam"
+    feature.file: "ftp://gpftp.broadinstitute.org/module_support_files/annotation/gtf/Escherichia_coli_K_12_DH10B_EB1_Ensembl.gtf"
 assertions:
         jobStatus: success
