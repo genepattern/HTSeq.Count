@@ -1,12 +1,12 @@
 #HTSeq.Count
 #Tue Feb 23 18:51:41 EST 2016
 JVMLevel=
-LSID=urn\:lsid\:8080.gpbroad.broadinstitute.org\:genepatternmodules\:498\:0.4
-author=Peter Carr;Broad Institute
+LSID=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00412
+author=Barbara Hill;Broad Institute
 categories=HTSeq;RNA-seq
 commandLine=<run-with-env> -u Python-2.7 -u .htseq-0.6.1-python-2.7.1-sqlite3-rtrees htseq-count  <samtype> <order> <stranded> <minaqual> <feature.type> <id.attr> <mode> <samout> <quiet> <alignment.file> <feature.file> \\> <output.file>
 cpuType=any
-description=Broad only htseq-count module using the '.htseq-0.6.1-python-2.7.1-sqlite3-rtrees' dotkit
+description=This module uses the biocontainers HTSeq.count image biocontainers/htseq:v0.11.2-1-deb-py3_cv1 which quantify gene expression for subsequent testing for differential expression, by counting how many reads align to a given gene.
 fileFormat=
 job.error_status.exit_value=true
 job.error_status.stderr=false
@@ -188,5 +188,5 @@ privacy=public
 quality=preproduction
 taskDoc=readme.txt
 taskType=HTSeq
-userid=pcarr@broadinstitute.org
-version=Published prerelease version 0.4 to the dev module repository
+userid=bhill@broadinstitute.org
+version=First draft of dockerized version
