@@ -2,17 +2,106 @@
 #Thu May 07 21:37:14 CEST 2020
 JVMLevel=
 LSID=urn\:lsid\:8080.guy.biobase.biobase.bits\:genepatternmodules\:60014\:2.1.
-author=Barbara Hill;Broad Institute, Guy Bottu;VIB BioinformaticsCore
+author=Guy Bottu;VIB BioinformaticsCore
 categories=RNA-seq
-commandLine=perl htseq_count_wrapper.pl --htseqcount <HTSEQ> --input <input.files> --format <input.format> <sample.names> --gtf <GTF.file> --strand <strandedness> --order <sorting.order> --minqual <min.qual> --mode <mode> --nonunique <count.nonunique> --secondary <count.secondary> --supplementary <count.supplementary> --featuretype <feature.type> --idtype <id.type> <gene.name> --output <output.file> --outformat <output.format>
-
+commandLine=<perl> <libdir>htseq_count_wrapper.pl --htseqcount <HTSEQ> --input <input.files> --format <input.format> <sample.names> --gtf <GTF.file> --strand <strandedness> --order <sorting.order> --minqual <min.qual> --mode <mode> --nonunique <count.nonunique> --secondary <count.secondary> --supplementary <count.supplementary> --featuretype <feature.type> --idtype <id.type> <gene.name> --output <output.file> --outformat <output.format>
 cpuType=any
 description=Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format (usually with exon annotation) and calculates for each sample the number of reads mapping to each feature.
 fileFormat=
 language=Python
 name=HTSeq.Count
 os=any
-
+p10_MODE=
+p10_TYPE=TEXT
+p10_default_value=ignore
+p10_description=Whether to count secondary alignments (which are marked in the SAM/BAM file by a 0x100 flag).
+p10_fileFormat=
+p10_flag=--secondary 
+p10_name=count.secondary
+p10_numValues=1..1
+p10_optional=
+p10_prefix=
+p10_prefix_when_specified=
+p10_type=java.lang.String
+p10_value=score\=yes;ignore\=no
+p11_MODE=
+p11_TYPE=TEXT
+p11_default_value=ignore
+p11_description=Whether to count supplementary alignments (which are marked in the SAM/BAM file by a 0x800 flag).
+p11_fileFormat=
+p11_flag=--supplementary 
+p11_name=count.supplementary
+p11_numValues=1..1
+p11_optional=
+p11_prefix=
+p11_prefix_when_specified=
+p11_type=java.lang.String
+p11_value=score\=yes;ignore\=no
+p12_MODE=
+p12_TYPE=TEXT
+p12_default_value=exon
+p12_description=Name in the 3<sup>th</sup> column of the GTF/GFF input file that is used to identify the features that must be counted.
+p12_fileFormat=
+p12_flag=--featuretype 
+p12_name=feature.type
+p12_numValues=1..1
+p12_optional=
+p12_prefix=
+p12_prefix_when_specified=
+p12_type=java.lang.String
+p12_value=
+p13_MODE=
+p13_TYPE=TEXT
+p13_default_value=gene_id
+p13_description=GTF/GFF attribute used to group features.
+p13_fileFormat=
+p13_flag=--idtype 
+p13_name=id.type
+p13_numValues=1..1
+p13_optional=
+p13_prefix=
+p13_prefix_when_specified=
+p13_type=java.lang.String
+p13_value=
+p14_MODE=
+p14_TYPE=TEXT
+p14_default_value=
+p14_description=GTF/GFF attribute with the name of the gene or some other information that can help to identify the gene in a more user-friendly way than the ID (optional). If you fill this in an extra column will be added to the output table. For Ensembl data <b>gene_name</b> is suitable.
+p14_fileFormat=
+p14_flag=--genename 
+p14_name=gene.name
+p14_numValues=0..1
+p14_optional=on
+p14_prefix=--genename 
+p14_prefix_when_specified=--genename 
+p14_type=java.lang.String
+p14_value=
+p15_MODE=
+p15_TYPE=TEXT
+p15_default_value=HTSeq.counts
+p15_description=output file name (if you choose GCT format .gct will automatically be added)
+p15_fileFormat=
+p15_flag=--output 
+p15_name=output.file
+p15_numValues=1..1
+p15_optional=
+p15_prefix=
+p15_prefix_when_specified=
+p15_type=java.lang.String
+p15_value=
+p16_MODE=
+p16_TYPE=TEXT
+p16_default_value=htseq
+p16_description=
+p16_fileFormat=
+p16_flag=--outformat 
+p16_name=output.format
+p16_numValues=1..1
+p16_optional=
+p16_prefix=
+p16_prefix_when_specified=
+p16_type=java.lang.String
+p16_value=htseq\=raw HTSeq format;excel\=with header added, suitable for import in Excel;gct\=GCT
 p1_MODE=IN
 p1_TYPE=FILE
 p1_default_value=
@@ -26,7 +115,6 @@ p1_prefix=
 p1_prefix_when_specified=
 p1_type=java.io.File
 p1_value=
-
 p2_MODE=
 p2_TYPE=TEXT
 p2_default_value=sam
@@ -40,7 +128,6 @@ p2_prefix=
 p2_prefix_when_specified=
 p2_type=java.lang.String
 p2_value=sam\=SAM;bam\=BAM
-
 p3_MODE=IN
 p3_TYPE=FILE
 p3_default_value=
@@ -54,7 +141,6 @@ p3_prefix=--names
 p3_prefix_when_specified=--names 
 p3_type=java.io.File
 p3_value=
-
 p4_MODE=IN
 p4_TYPE=FILE
 p4_choiceDir=ftp\://data.gp.vib.be/pub/gtf/
@@ -70,7 +156,6 @@ p4_prefix=
 p4_prefix_when_specified=
 p4_type=java.io.File
 p4_value=
-
 p5_MODE=
 p5_TYPE=TEXT
 p5_default_value=yes
@@ -84,7 +169,6 @@ p5_prefix=
 p5_prefix_when_specified=
 p5_type=java.lang.String
 p5_value=no\=none;yes\=forward;reverse\=reverse
-
 p6_MODE=
 p6_TYPE=TEXT
 p6_default_value=name
@@ -98,7 +182,6 @@ p6_prefix=
 p6_prefix_when_specified=
 p6_type=java.lang.String
 p6_value=name\=by name;pos\=by position
-
 p7_MODE=
 p7_TYPE=Integer
 p7_default_value=10
@@ -113,7 +196,6 @@ p7_prefix_when_specified=
 p7_range=0+
 p7_type=java.lang.Integer
 p7_value=
-
 p8_MODE=
 p8_TYPE=TEXT
 p8_default_value=union
@@ -127,7 +209,6 @@ p8_prefix=
 p8_prefix_when_specified=
 p8_type=java.lang.String
 p8_value=union\=union;intersection-strict\=intersection-strict;intersection-nonempty\=intersection-nonempty
-
 p9_MODE=
 p9_TYPE=TEXT
 p9_default_value=none
@@ -141,107 +222,9 @@ p9_prefix=
 p9_prefix_when_specified=
 p9_type=java.lang.String
 p9_value=all\=yes;none\=no
-
-p10_MODE=
-p10_TYPE=TEXT
-p10_default_value=ignore
-p10_description=Whether to count secondary alignments (which are marked in the SAM/BAM file by a 0x100 flag).
-p10_fileFormat=
-p10_flag=--secondary 
-p10_name=count.secondary
-p10_numValues=1..1
-p10_optional=
-p10_prefix=
-p10_prefix_when_specified=
-p10_type=java.lang.String
-p10_value=score\=yes;ignore\=no
-
-p11_MODE=
-p11_TYPE=TEXT
-p11_default_value=ignore
-p11_description=Whether to count supplementary alignments (which are marked in the SAM/BAM file by a 0x800 flag).
-p11_fileFormat=
-p11_flag=--supplementary 
-p11_name=count.supplementary
-p11_numValues=1..1
-p11_optional=
-p11_prefix=
-p11_prefix_when_specified=
-p11_type=java.lang.String
-p11_value=score\=yes;ignore\=no
-
-p12_MODE=
-p12_TYPE=TEXT
-p12_default_value=exon
-p12_description=Name in the 3<sup>th</sup> column of the GTF/GFF input file that is used to identify the features that must be counted.
-p12_fileFormat=
-p12_flag=--featuretype 
-p12_name=feature.type
-p12_numValues=1..1
-p12_optional=
-p12_prefix=
-p12_prefix_when_specified=
-p12_type=java.lang.String
-p12_value=
-
-p13_MODE=
-p13_TYPE=TEXT
-p13_default_value=gene_id
-p13_description=GTF/GFF attribute used to group features.
-p13_fileFormat=
-p13_flag=--idtype 
-p13_name=id.type
-p13_numValues=1..1
-p13_optional=
-p13_prefix=
-p13_prefix_when_specified=
-p13_type=java.lang.String
-p13_value=
-
-p14_MODE=
-p14_TYPE=TEXT
-p14_default_value=
-p14_description=GTF/GFF attribute with the name of the gene or some other information that can help to identify the gene in a more user-friendly way than the ID (optional). If you fill this in an extra column will be added to the output table. For Ensembl data <b>gene_name</b> is suitable.
-p14_fileFormat=
-p14_flag=--genename 
-p14_name=gene.name
-p14_numValues=0..1
-p14_optional=on
-p14_prefix=--genename 
-p14_prefix_when_specified=--genename 
-p14_type=java.lang.String
-p14_value=
-
-p15_MODE=
-p15_TYPE=TEXT
-p15_default_value=HTSeq.counts
-p15_description=output file name (if you choose GCT format .gct will automatically be added)
-p15_fileFormat=
-p15_flag=--output 
-p15_name=output.file
-p15_numValues=1..1
-p15_optional=
-p15_prefix=
-p15_prefix_when_specified=
-p15_type=java.lang.String
-p15_value=
-
-p16_TYPE=TEXT
-p16_default_value=htseq
-p16_description=
-p16_fileFormat=
-p16_flag=--outformat 
-p16_name=output.format
-p16_numValues=1..1
-p16_optional=
-p16_prefix=
-p16_prefix_when_specified=
-p16_type=java.lang.String
-p16_value=htseq\=raw HTSeq format;excel\=with header added, suitable for import in Excel;gct\=GCT
-
 privacy=public
-quality=preproduction
-taskDoc=htseq_count_vib_doc.html
+quality=production
+taskDoc=htseq_count.html
 taskType=RNA-seq
-userid=bhill@broadinstitute.org
-version=alpha
+userid=guy.bottu@vib.be
+version=
