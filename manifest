@@ -57,7 +57,7 @@ p3_value=
 
 p4_MODE=IN
 p4_TYPE=FILE
-p4_choiceDir=ftp\://data.gp.vib.be/pub/gtf/
+p4_choiceDir=ftp\://gpftp.broadinstitute.org/module_support_files/annotation/gtf/
 p4_choiceDirFilter=*.g?f
 p4_default_value=
 p4_description=A GTF or GFF file containing a list of gene model annotations.
