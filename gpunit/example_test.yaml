@@ -1,17 +1,31 @@
 #
-# Example job ran successfully with v. 0.4 on gpbroad server
-# Took about 15 seconds of CPU time to complete
+# Example job ran successfully with v. 0.10 on gpbeta server
+# Took about 45 seconds to complete (run to end)
 #
-# Input file was selected arbitrarily, this should not be used
-# as a meaningful example run. The warnings in the stderr.txt file are expected.
+# The data, both in and out, and parameters came from the htseq Git repo test 
+# https://github.com/htseq/htseq/releases/tag/release_0.12.3
 #
-name: HTSeq.Count example with arbitrary data
+name: HTSeq.Count nightly test - basic input from HTSeq Git
 module: "HTSeq.Count"
 params:
-    samtype: "bam"
-    stranded: "yes"
-    quiet: "-q"
-    alignment.file: "e_coli_ensemble.accepted_hits.bam"
-    feature.file: "ftp://gpftp.broadinstitute.org/module_support_files/annotation/gtf/Escherichia_coli_K_12_DH10B_EB1_Ensembl.gtf"
+    input.files: "input/HTSeqGit/bamfile_no_qualities.bam"
+    input.format: "BAM"
+    sample.names: ""
+    GTF.file: "input/HTSeqGit/bamfile_no_qualities.gtf"
+    strandedness: "forward"
+    sorting.order: "by name"
+    min.qual: 10
+    mode: "union"
+    count.nonunique: "no"
+    count.secondary: "no"
+    count.supplementary: "no"
+    feature.type: "exon"
+    id.type: "gene_id"
+    gene.name: "" 
+    output.file: "bamfile_no_qualities.HTSeq.counts"
+    output.format: "raw HTSeq format"
 assertions:
         jobStatus: success
+        files:
+            bamfile_no_qualities.HTSeq.counts:
+                diff: output/KnownGood_bamfile_no_qualities.HTSeq.counts

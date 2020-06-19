@@ -1,0 +1,20 @@
+# Created: Mon Jun 15 20:05:48 UTC 2020 by bhill@broadinstitute.org
+# Job: 60097    server:  https://beta.genepattern.org/gp/
+# Module: HTSeq.Count urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00412:0.11
+# Parameters: 
+#    input.files = input.files.list.txt   https://beta.genepattern.org/gp/users/bhill%40broadinstitute.org/tmp/run7848384031610658966.tmp/input.files.list.txt
+#    input.format = BAM
+#    sample.names = 
+#    GTF.file = bamfile_no_qualities.gtf   https://beta.genepattern.org/gp/users/bhill%40broadinstitute.org/tmp/run3953418152320852174.tmp/GTF.file/2/bamfile_no_qualities.gtf
+#    strandedness = forward
+#    sorting.order = by name
+#    min.qual = 10
+#    mode = union
+#    count.nonunique = no
+#    count.secondary = no
+#    count.supplementary = no
+#    feature.type = exon
+#    id.type = gene_id
+#    gene.name = 
+#    output.file = HTSeq.counts
+#    output.format = raw HTSeq format
