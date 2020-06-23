@@ -2,11 +2,11 @@
 { 
   name: "Basic",
   hidden: false,
-  parameters: [ "input.files", "input.format", "sample.names", "GTF.file", "strandedness", "output.file", "output.format" ]
+  parameters: [ "input.files", "input.format", "sorting.order", "sample.names", "GTF.file", "strandedness", "output.file", "output.format" ]
 },
 { 
   name: "Advanced", 
   hidden: true,
-  parameters: [ "sorting.order", "min.qual", "mode", "count.nonunique", "count.secondary", "count.supplementary", "id.type", "gene.name", "feature.type" ]
+  parameters: [ "min.qual", "mode", "count.nonunique", "count.secondary", "count.supplementary", "id.type", "gene.name", "feature.type" ]
 }
 ]
