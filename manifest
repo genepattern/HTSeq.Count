@@ -7,7 +7,7 @@ categories=RNA-seq
 commandLine=perl /htseq_count/htseq_count_wrapper.pl --htseqcount htseq-count --input <input.files> --format <input.format> <sample.names> --gtf <GTF.file> --strand <strandedness> --order <sorting.order> --minqual <min.qual> --mode <mode> --nonunique <count.nonunique> --secondary <count.secondary> --supplementary <count.supplementary> --featuretype <feature.type> --idtype <id.type> <gene.name> --output <output.file> --outformat <output.format>
 
 cpuType=any
-description=Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format (usually with exon annotation) and calculates for each sample the number of reads mapping to each feature.
+description=Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format (usually with exon annotation) and calculates for each sample the number of reads mapping to each feature. (HTSeq.count v0.11.2)
 fileFormat=
 language=Python
 name=HTSeq.Count
