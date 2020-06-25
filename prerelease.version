@@ -1,3 +1,5 @@
+#updated after building 0.12
+#Thu, 25 Jun 2020 13:07:38 -0400
 #updated after building 0.11
 #Mon, 15 Jun 2020 15:29:05 -0400
 #updated after building 0.10
@@ -19,5 +21,5 @@
 #prerelease version number
 #Tue, 03 Jun 2014 13:31:32 -0400
 #Thu Mar 22 12:30:21 EDT 2012
-prerelease.number=12
+prerelease.number=13
 
