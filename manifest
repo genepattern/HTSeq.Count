@@ -28,19 +28,19 @@ p1_prefix_when_specified=
 p1_type=java.io.File
 p1_value=
 
-p2_MODE=
-p2_TYPE=TEXT
-p2_default_value=sam
-p2_description=
-p2_fileFormat=
-p2_flag=--format 
-p2_name=input.format
-p2_numValues=1..1
-p2_optional=
-p2_prefix=
-p2_prefix_when_specified=
-p2_type=java.lang.String
-p2_value=sam\=SAM;bam\=BAM
+#p2_MODE=
+#p2_TYPE=TEXT
+#p2_default_value=sam
+#p2_description=
+#p2_fileFormat=
+#p2_flag=--format 
+#p2_name=input.format
+#p2_numValues=1..1
+#p2_optional=
+#p2_prefix=
+#p2_prefix_when_specified=
+#p2_type=java.lang.String
+#p2_value=sam\=SAM;bam\=BAM
 
 p3_MODE=IN
 p3_TYPE=FILE
@@ -245,4 +245,4 @@ quality=preproduction
 taskDoc=htseq_count_vib_doc.html
 taskType=RNA-seq
 userid=bhill@broadinstitute.org
-version=alpha - updated manifest for beta release
+version=alpha - testing sam/bam enforcement & autodetect
