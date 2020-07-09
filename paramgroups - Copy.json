@@ -2,7 +2,7 @@
 { 
   name: "Basic",
   hidden: false,
-  parameters: [ "input.files", "sorting.order", "sample.names", "GTF.file", "strandedness", "output.file", "output.format" ]
+  parameters: [ "input.files", "input.format", "sorting.order", "sample.names", "GTF.file", "strandedness", "output.file", "output.format" ]
 },
 { 
   name: "Advanced", 
