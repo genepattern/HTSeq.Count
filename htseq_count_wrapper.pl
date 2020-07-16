@@ -3,6 +3,7 @@ use Getopt::Long;
 GetOptions(\%options,
   "htseqcount=s", # --htseqcount <HTSEQ> must be on command line
   "input=s", # is always input.files.list
+  "format=s", # sam (default) or bam
   "names=s", # optional
   "gtf=s", # an ftp object
   "order=s", # name (default) or pos
@@ -23,7 +24,7 @@ GetOptions(\%options,
 # if extra table is asked for, remember this for later in the script
 $cmd = "$options{htseqcount} -q";
   # set quiet to prevent progress of run to be sent to standard output
-$cmd .= " -r $options{order} -s $options{strand} -a $options{minqual} -m $options{mode} --nonunique=$options{nonunique} --secondary-alignments=$options{secondary} --supplementary-alignments=$options{supplementary} -t $options{featuretype} -i $options{idtype}";
+$cmd .= " -f $options{format} -r $options{order} -s $options{strand} -a $options{minqual} -m $options{mode} --nonunique=$options{nonunique} --secondary-alignments=$options{secondary} --supplementary-alignments=$options{supplementary} -t $options{featuretype} -i $options{idtype}";
 if ($options{genename} ne '') {
   $extratable = 1;
   $extratable_header = $options{genename};
