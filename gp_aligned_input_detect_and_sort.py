@@ -13,13 +13,15 @@ parser.add_argument("-", "--input",
 parser.parse_args()
 
 # ~~~need to make this all a loop for all inputs provided~~
-alignment_file =
+# main question is how to get the args off the command line - do I need to define that here? or does the argparse func above do that?
+# probably don't need this
+# parser.alignment_file =
 
 # check to see if input appears to be intact 
 # & print files names that don't pass to stdout
 # !does not read the middle of the file!
 # see samtools doc for more information
-pysam.quickcheck("-v", alignment_file)
+pysam.quickcheck("-v", parser.alignment_file)
 print('quickchecked')
 
 # file extension check/format detection
@@ -33,12 +35,13 @@ print(file_extension)
 #samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format] [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
 pysam.sort(
     "-o", 
-    input_filename + "_nameSort" + file_extension,
+    alignment_file + "_nameSort" + file_extension,
     "-n", 
     filename)
 print('sorted')
 
 # TO DO
 # 7.15.20 - need variables for input.filename & out - set these at the top and reuse throughout
-# need to pass values to htseq_count_wrapper
+# need to pass values to htseq_count_wrapper - rebuild command line? - better if you concat orig 
+# sys.argv start at arg1 (not arg0)
  
