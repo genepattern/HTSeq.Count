@@ -16,18 +16,13 @@ parser.add_argument("-", "--input",
 args = parser.parse_args()
 
 # # !! need to make these all in a for loop - can have more than 1 input file
+# https://docs.python.org/3/library/fileinput.html#module-fileinput
 
-# check to see if input appears to be intact 
-# & print files names that don't pass to stdout
-# !does not read the middle of the file!
-# see samtools doc for more information
+# check to see if input appears to be intact & print files names that don't pass to stdout
+# !does not read the middle of the file! see samtools doc for more information
 print("running samtools quickcheck")
-try:
-    pysam.quickcheck("-v", "-v", args.alignment_file)
-except OSError:
-    print("input files don't have a valid header or are missing an EOF block")
-else:
-    print("quickcheck okay")
+pysam.quickcheck("-v", args.alignment_file)
+print("quickcheck okay")
 
 # file extension check/format detection
 # This can be removed in a future version when 
@@ -48,14 +43,16 @@ sorted_input = pysam.sort(
 print('sorted')
 print("sorted file name is " + args.alignment_file + "_nameSort" + file_extension)
 
-# Make new command line
 
 # get the original command line
-# params =
+orig_cmd = str(sys.argv[1:])
+print("Original command line was " + orig_cmd)
+# Make new command line with sorted_input
+# & file_extension converted to the default value for format on the new command line.
+
 # run htseq-count via original VIB perl wrapper with sorted file from this wrapper and format preset
 # WHAT IS HAPPENING??
 htseq_call = subprocess.Popen(["perl", "htseq_count_wrapper.pl", sorted_input], stdout=sys.stdout)
-print("just checking")
 htseq_call.communicate()
 
 # TO DO
