@@ -1,28 +1,36 @@
 #!/usr/bin/env python3
 
-import argparse
+
 from io import StringIO
 import os
 import subprocess
+from subprocess import PIPE, STDOUT
 import sys
 
 import pysam
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-", "--input",
-                    dest="alignment_file",
-                    default=None,
-                    type=str,
-                    help="Input file(s) in SAM or BAM format.")
 # commandLine=perl /htseq_count/htseq_count_wrapper.pl --htseqcount htseq-count --input <input.files> <sample.names> --gtf <GTF.file> --strand <strandedness> --minqual <min.qual> --mode <mode> --nonunique <count.nonunique> --secondary <count.secondary> --supplementary <count.supplementary> --featuretype <feature.type> --idtype <id.type> <gene.name> --output <output.file> --outformat <output.format>
 
-args = parser.parse_args()
+def generate_command():
+    buff = StringIO()
+    buff.write(u"htseq-count ")
 
-# for arg in vars(args):
-#    print(arg, getattr(args, arg))
+    allargs = iter(sys.argv[1:])
+    for arg in allargs:
+        #this bit should go in it's own func so that the returned array can be used globally
+        if (arg.startswith('--input'))
+            # should be a file list
+            val = next(allargs, None)
+            buff.write(u" ")
 
-# # !! need to make these all in a for loop - can have more than 1 input file
-# https://docs.python.org/3/library/fileinput.html#module-fileinput
+            # need to write list of files to an array to be iterated over by sort & file extension
+            # need to check that the file extensions match ==
+            # need to write the sorted files back into the expected GP file list
+
+
+
+
+
 
 # check to see if input appears to be intact & print files names that don't pass to stdout
 # !does not read the middle of the file! see samtools doc for more information
