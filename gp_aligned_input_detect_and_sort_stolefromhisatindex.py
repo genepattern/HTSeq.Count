@@ -17,45 +17,71 @@ def generate_command():
 
     allargs = iter(sys.argv[1:])
     for arg in allargs:
-        #this bit should go in it's own func so that the returned array can be used globally
+        # NOTE need to return the array to use globally
         if (arg.startswith('--input'))
             # should be a file list
             val = next(allargs, None)
             buff.write(u" ")
 
-            # need to write list of files to an array to be iterated over by sort & file extension
+            with open(val) as f:
+                content = f.readlines()
+            # you may also want to remove whitespace characters like `\n` at the end of each line
+            content = [alignfile.strip() for alignfile in content]
+
+            # check to see if input appears to be intact & print files names that don't pass to stdout
+            # !does not read the middle of the file! see samtools doc for more information
+            print("running samtools quickcheck")
+            for alignfile in content:
+                try:
+                    pysam.quickcheck("-v", alignfile)
+                except:
+                    print("One or more files is not intact. See below for more information")
+                else:
+                    print("quickcheck okay")
+
+                # file extension check/format detection
+                # This can be removed in a future version when
+                # htseq-count no longer requires a parameter it is ignoring...
+                print("determining file extension")
+                exts = [os.path.splitext(alignfile)[1]]
+                #file_extension = os.path.splitext(alignfile)[1]
+
+                # check that all extensions are the same
+                extensions = exts
+                check = True
+
+                for x in exts:
+                    if extensions != x:
+                        check = False
+                        break
+
+                    if check:
+                        print("All extensions are the same")
+                        file_extension = x
+                        print("input is " + file_extension)
+                        return file_extension
+
+                    else:
+                        print("Files are not of the same format")
+                        return
+
+
+
+                # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
+                # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
+                sorted_input = pysam.sort(
+                    "-o",
+                    alignfile + "_nameSort" + file_extension,
+                    "-n",
+                    alignfile)
+                print('sorted')
+                print("sorted file name is " + alignfile + "_nameSort" + file_extension)
+
+                return file_extension
+
+
             # need to check that the file extensions match ==
             # need to write the sorted files back into the expected GP file list
-
-
-
-
-
-
-# check to see if input appears to be intact & print files names that don't pass to stdout
-# !does not read the middle of the file! see samtools doc for more information
-print("running samtools quickcheck")
-pysam.quickcheck("-v", args.alignment_file)
-print("quickcheck okay")
-
-# file extension check/format detection
-# This can be removed in a future version when 
-# htseq-count no longer requires a parameter it is ignoring...
-print("determining file extension")
-filename, file_extension = os.path.splitext(args.alignment_file)
-# print("input file basename is " + filename)
-print("input is " + file_extension)
-
-
-# samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
-# [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
-sorted_input = pysam.sort(
-    "-o",
-    args.alignment_file + "_nameSort" + file_extension,
-    "-n",
-    args.alignment_file)
-print('sorted')
-print("sorted file name is " + args.alignment_file + "_nameSort" + file_extension)
 
 
 # get the original command line
