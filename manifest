@@ -4,7 +4,7 @@ JVMLevel=
 LSID=urn\:lsid\:8080.guy.biobase.biobase.bits\:genepatternmodules\:60014\:2.1.
 author=Barbara Hill;Broad Institute, Guy Bottu;VIB BioinformaticsCore
 categories=RNA-seq
-commandLine=/htseq_count/gp_aligned_input_detect_and_sort_new.py --htseqcount htseq-count --input <input.files> <sample.names> --gtf <GTF.file> --strand <strandedness> --minqual <min.qual> --mode <mode> --nonunique <count.nonunique> --secondary <count.secondary> --supplementary <count.supplementary> --featuretype <feature.type> --idtype <id.type> <gene.name> --output <output.file> --outformat <output.format>
+commandLine=/htseq_count/htseqcount_input_detect_and_sort.py --htseqcount htseq-count --input <input.files> <sample.names> --gtf <GTF.file> --strand <strandedness> --minqual <min.qual> --mode <mode> --nonunique <count.nonunique> --secondary <count.secondary> --supplementary <count.supplementary> --featuretype <feature.type> --idtype <id.type> <gene.name> --output <output.file> --outformat <output.format>
 
 cpuType=any
 description=Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format (usually with exon annotation) and calculates for each sample the number of reads mapping to each feature. (HTSeq.count v0.11.2)
