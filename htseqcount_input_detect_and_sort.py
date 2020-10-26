@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# better line ending?
 
 from io import StringIO
 import os
