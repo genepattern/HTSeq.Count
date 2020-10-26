@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# let's try new line endings
 
 from io import StringIO
 import os
