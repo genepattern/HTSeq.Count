@@ -15,7 +15,7 @@ def generate_command():
         allargs = iter(sys.argv[1:])
         for arg in allargs:
             # NOTE need to return the array to use globally
-            if (arg.startswith('--input'))
+            if (arg.startswith('--input')):
                 # should be a file list
                 val = next(allargs, None)
                 buff.write(u" ")
