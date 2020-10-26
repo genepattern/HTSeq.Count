@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 from io import StringIO
 import os
 import subprocess
