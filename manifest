@@ -12,7 +12,7 @@ fileFormat=bam;sam
 language=Python
 name=HTSeq.Count
 os=any
-job.docker.image=genepattern/htseq_count:0.1
+job.docker.image=genepattern/htseq_count:0.2
 
 p1_MODE=IN
 p1_TYPE=FILE
