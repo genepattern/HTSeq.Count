@@ -56,24 +56,25 @@ def generate_command():
 
                     elif check:
                         print("All extensions are the same")
-                        global file_extension
+                        global file_format
                         file_extension = exts[0]
-                        print("input is " + file_extension)
+                        file_format = file_extension.replace(".", "")
+                        print("input format is " + file_format)
                         buff.write(u"--format")
-                        buff.write(str(file_extension))
+                        buff.write(file_format)
 
-                        return file_extension
+                        return file_format
 
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
                 global sorted_input
                 sorted_input = [pysam.sort(
                     "-o",
-                    alignfile + "_nameSort" + file_extension,
+                    alignfile + "_nameSort" + "." + file_format,
                     "-n",
                     alignfile)]
                 print('sorted')
-                print("sorted file name is " + alignfile + "_nameSort" + file_extension)
+                print("sorted file name is " + alignfile + "_nameSort" + "." + file_format)
                 buff.write(u"--order name")
 
                 return sorted_input
