@@ -104,7 +104,7 @@ retval = childProcess.returncode
 if retval != 0:
     # if non-zero return, print stderr to stderr
     print(stdout)
-    print >> sys.stderr, stderr
+    print(stderr, file=sys.stderr)
 # else:
 # if not a non-zero stdout, print stderr to stdout since Hisat2Indexer logs non-error
 # stuff to stderr.  Downside is the stderr and stdout are not interlevened
