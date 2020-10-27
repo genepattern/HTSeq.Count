@@ -16,7 +16,7 @@ def generate_command():
     allargs = iter(sys.argv[1:])
     for arg in allargs:
         # NOTE need to return the array to use globally
-        if (arg.startswith('--input')):
+        if arg.startswith('--input'):
             # should be a file list
             val = next(allargs, None)
             buff.write(u" ")
@@ -51,7 +51,7 @@ def generate_command():
                 for x in exts:
                     if ele != x:
                         check = False
-                        print('Files are not of the same format')
+                        print("Files are not of the same format")
                         break
 
                     elif check:
@@ -63,8 +63,7 @@ def generate_command():
                         buff.write(u"--format")
                         buff.write(file_format)
 
-                        return file_format
-
+                print("name sorting input")
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
                 global sorted_input
@@ -73,19 +72,18 @@ def generate_command():
                     alignfile + "_nameSort" + "." + file_format,
                     "-n",
                     alignfile)]
-                print('sorted')
+                print("sorted")
                 print("sorted file name is " + alignfile + "_nameSort" + "." + file_format)
                 buff.write(u"--order name")
 
-                return sorted_input
-
             # write the sorted files back into the expected GP file list
-            f = open('input.files.list', 'w')
+            f = open("input.files.list", "w")
             for ele in sorted_input:
                 f.write(ele + '\n')
             f.close()
 
             buff.write(u"--input input.files.list")
+            return buff.getvalue()
 
 
 # get the original command line
