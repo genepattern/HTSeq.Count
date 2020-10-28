@@ -26,7 +26,7 @@ def generate_command():
                 content = f.readlines()
             # you may also want to remove whitespace characters like `\n` at the end of each line
             content = [alignfile.strip() for alignfile in content]
-            print("content = " + content)
+            print("content = " + str(content))
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
             # !does not read the middle of the file! see samtools doc for more information
