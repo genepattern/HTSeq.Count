@@ -11,8 +11,8 @@ import pysam
 
 def generate_command():
     buff = StringIO()
-    buff.write(u"htseq-count ")
-    buff.write(u"--input input.files.list ")
+    #buff.write(u"htseq-count ")
+    #buff.write(u"--input input.files.list ")
 
     allargs = iter(sys.argv[1:])
     for arg in allargs:
@@ -102,7 +102,7 @@ print("Original command line was " + orig_cmd)
 # Make new command line with sorted_input
 # & file_extension converted to the default value for format on the new command line,
 # using list comprehension
-new_cmd = generate_command() + " " + ' '.join(map(str, sys.argv[5:]))
+new_cmd = 'htseq_count_wrapper.pl --htseq-count --input input.files.list ' + generate_command() + " " + ' '.join(map(str, sys.argv[5:]))
 print("this is the " + new_cmd)
 
 childProcess = subprocess.Popen(new_cmd, shell=True, env=os.environ, stdout=PIPE, stderr=PIPE)
