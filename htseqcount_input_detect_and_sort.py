@@ -45,7 +45,7 @@ def generate_command():
                 # htseq-count no longer requires a parameter it is ignoring...
                 print("determining file extension")
                 exts = [os.path.splitext(alignfile)[1]]
-                names = [os.path.splitext(alignfile)[0]]
+                basename = os.path.splitext(alignfile)[0]
                 ele = exts[0]
                 print(exts[0])
 
@@ -71,21 +71,25 @@ def generate_command():
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
                 global sorted_input
                 try:
-                    sorted_input = [pysam.sort(
+                    pysam.sort(
                         "-o",
-                        alignfile + "_nameSort" + "." + file_format,
+                        basename + "_nameSort" + "." + file_format,
                         "-n",
-                        alignfile)]
+                        alignfile)
                 except:
                     print(pysam.sort.getMessage())
                 else:
                     print("sorted")
+                    sorted_input = basename + "_nameSort" + "." + file_format
                     buff.write(u" --order name")
                     print(sorted_input)
 
+            all_inputs = [sorted_input]
+            print("These are all the sorted inputs " + str(all_inputs))
+
             # write the sorted files back into the expected GP file list
             f = open("input.files.list", "w")
-            for ele in sorted_input:
+            for ele in all_inputs:
                 f.write(ele + '\n')
             f.close()
 
