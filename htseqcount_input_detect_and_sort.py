@@ -42,7 +42,7 @@ def generate_command():
                 # htseq-count no longer requires a parameter it is ignoring...
                 print("determining file extension")
                 exts = [os.path.splitext(alignfile)[1]]
-                alignfile_name = [os.path.splitext(alignfile)[0]]
+                names = [os.path.splitext(alignfile)[0]]
                 ele = exts[0]
                 print(exts[0])
 
@@ -63,7 +63,6 @@ def generate_command():
                         print("input format is " + file_format)
                         buff.write(u"--format ")
                         buff.write(file_format)
-
                 print("name sorting input")
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
@@ -74,9 +73,10 @@ def generate_command():
                     "-n",
                     alignfile)]
                 print("sorted")
-                print("sorted file name is " + alignfile_name + "_nameSort" + "." + file_format)
                 buff.write(u"--order name")
-
+                for y in names:
+                    print("sorted file name is " + y + "_nameSort" + "." + file_format)
+                
             # write the sorted files back into the expected GP file list
             f = open("input.files.list", "w")
             for ele in sorted_input:
