@@ -5,7 +5,7 @@
     <target name="create-zip" depends="init">
         <antcall target="prezip" />
         <zip destfile="${dest.dir}/${ant.project.name}.zip" whenempty="fail" defaultexcludes="true">
-            <fileset dir="." includes="manifest, readme.txt, paramgroups.json, htseq_count_wrapper.pl, htseq_count_vib_doc.html" />
+            <fileset dir="." includes="manifest, readme.txt, paramgroups.json, htseq_count_vib_doc.html" />
         </zip>
         <antcall target="postzip" />
     </target>
