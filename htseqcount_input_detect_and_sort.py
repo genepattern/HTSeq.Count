@@ -100,9 +100,10 @@ orig_cmd = str(sys.argv[1:])
 print("Original command line was " + orig_cmd)
 
 # Make new command line with sorted_input
-# & file_extension converted to the default value for format on the new command line.
-new_cmd = generate_command() + str(sys.argv[5:])
-print(new_cmd)
+# & file_extension converted to the default value for format on the new command line,
+# using list comprehension
+new_cmd = generate_command() + ' '.join(map(str, sys.argv[5:]))
+print("this is the " + new_cmd)
 
 childProcess = subprocess.Popen(new_cmd, shell=True, env=os.environ, stdout=PIPE, stderr=PIPE)
 stdout, stderr = childProcess.communicate()
