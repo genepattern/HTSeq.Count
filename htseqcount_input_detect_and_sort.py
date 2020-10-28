@@ -11,8 +11,8 @@ import pysam
 
 def generate_command():
     buff = StringIO()
-    buff.write(u" --input input.files.list ")
     buff.write(u"htseq-count ")
+    buff.write(u"--input input.files.list ")
 
     allargs = iter(sys.argv[1:])
     for arg in allargs:
@@ -26,6 +26,7 @@ def generate_command():
                 content = f.readlines()
             # you may also want to remove whitespace characters like `\n` at the end of each line
             content = [alignfile.strip() for alignfile in content]
+            print("content = " + content)
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
             # !does not read the middle of the file! see samtools doc for more information
@@ -37,6 +38,7 @@ def generate_command():
                     print("One or more files is not intact. See below for more information")
                 else:
                     print("quickcheck okay")
+                    print('alignfile = ' + alignfile)
 
                 # file extension check/format detection
                 # This can be removed in a future version when
@@ -70,10 +72,10 @@ def generate_command():
                 global sorted_input
                 try:
                     sorted_input = [pysam.sort(
-                    "-o",
-                    alignfile + "_nameSort" + "." + file_format,
-                    "-n",
-                    alignfile)]
+                        "-o",
+                        alignfile + "_nameSort" + "." + file_format,
+                        "-n",
+                        alignfile)]
                 except:
                     print(pysam.sort.getMessage())
                 else:
