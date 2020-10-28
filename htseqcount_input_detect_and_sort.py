@@ -73,17 +73,18 @@ def generate_command():
                     "-n",
                     alignfile)]
                 print("sorted")
-                buff.write(u"--order name")
+                buff.write(u" --order name")
                 for y in names:
                     print("sorted file name is " + y + "_nameSort" + "." + file_format)
-                
+                    print(sorted_input)
+
             # write the sorted files back into the expected GP file list
             f = open("input.files.list", "w")
             for ele in sorted_input:
                 f.write(ele + '\n')
             f.close()
 
-            buff.write(u"--input input.files.list")
+            buff.write(u" --input input.files.list")
             return buff.getvalue()
 
 
