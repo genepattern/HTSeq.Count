@@ -5,6 +5,7 @@ RUN mkdir /htseq_count
 RUN chown biodocker /htseq_count
 USER biodocker
 COPY htseqcount_input_detect_and_sort.py /htseq_count/htseqcount_input_detect_and_sort.py
+COPY htseq_count_wrapper.pl /htseq_count/htseq_count_wrapper.pl
 
 ENTRYPOINT []
 
