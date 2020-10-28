@@ -11,6 +11,7 @@ import pysam
 
 def generate_command():
     buff = StringIO()
+    buff.write(u" --input input.files.list ")
     buff.write(u"htseq-count ")
 
     allargs = iter(sys.argv[1:])
@@ -67,15 +68,17 @@ def generate_command():
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
                 global sorted_input
-                sorted_input = [pysam.sort(
+                try:
+                    sorted_input = [pysam.sort(
                     "-o",
                     alignfile + "_nameSort" + "." + file_format,
                     "-n",
                     alignfile)]
-                print("sorted")
-                buff.write(u" --order name")
-                for y in names:
-                    print("sorted file name is " + y + "_nameSort" + "." + file_format)
+                except:
+                    print(pysam.sort.getMessage())
+                else:
+                    print("sorted")
+                    buff.write(u" --order name")
                     print(sorted_input)
 
             # write the sorted files back into the expected GP file list
@@ -84,7 +87,6 @@ def generate_command():
                 f.write(ele + '\n')
             f.close()
 
-            buff.write(u" --input input.files.list")
             return buff.getvalue()
 
 
