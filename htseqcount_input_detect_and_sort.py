@@ -20,7 +20,6 @@ def generate_command():
         if arg.startswith('--input'):
             # should be a file list
             val = next(allargs, None)
-            buff.write(u" ")
 
             with open(val) as f:
                 content = f.readlines()
@@ -102,9 +101,7 @@ print("Original command line was " + orig_cmd)
 
 # Make new command line with sorted_input
 # & file_extension converted to the default value for format on the new command line.
-# allargs = iter(sys.argv)
-# next(allargs)
-new_cmd = generate_command()
+new_cmd = generate_command() + str(sys.argv[5:])
 print(new_cmd)
 
 childProcess = subprocess.Popen(new_cmd, shell=True, env=os.environ, stdout=PIPE, stderr=PIPE)
@@ -114,10 +111,5 @@ if retval != 0:
     # if non-zero return, print stderr to stderr
     print(stdout)
     print(stderr, file=sys.stderr)
-# else:
-# if not a non-zero stdout, print stderr to stdout since Hisat2Indexer logs non-error
-# stuff to stderr.  Downside is the stderr and stdout are not interlevened
-# print(stdout)
-# print(stderr)
 
 sys.exit(retval)
