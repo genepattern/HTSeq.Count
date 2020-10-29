@@ -11,12 +11,9 @@ import pysam
 
 def generate_command():
     buff = StringIO()
-    #buff.write(u"htseq-count ")
-    #buff.write(u"--input input.files.list ")
 
     allargs = iter(sys.argv[1:])
     for arg in allargs:
-        # NOTE need to return the array to use globally
         if arg.startswith('--input'):
             # should be a file list
             val = next(allargs, None)
@@ -39,8 +36,7 @@ def generate_command():
                     print("quickcheck okay")
                     print('alignfile = ' + alignfile)
 
-                # file extension check/format detection
-                # This can be removed in a future version when
+                # file extension check/format detection this can be removed in a future version when
                 # htseq-count no longer requires a parameter it is ignoring...
                 print("determining file extension")
                 exts = [os.path.splitext(alignfile)[1]]
@@ -65,6 +61,7 @@ def generate_command():
                         print("input format is " + file_format)
                         buff.write(u"--format ")
                         buff.write(file_format)
+
                 print("name sorting input")
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
