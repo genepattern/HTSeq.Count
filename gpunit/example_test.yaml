@@ -28,4 +28,4 @@ assertions:
         jobStatus: success
         files:
             bamfile_no_qualities.HTSeq.counts:
-                diff: output/KnownGood_bamfile_no_qualities.HTSeq.counts
+                diff: output/HTSeqGit/KnownGood_bamfile_no_qualities.HTSeq.counts
