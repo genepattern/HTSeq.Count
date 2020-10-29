@@ -1,7 +1,7 @@
 #HTSeq.Count
 #Thu May 07 21:37:14 CEST 2020
 JVMLevel=
-LSID=urn\:lsid\:8080.guy.biobase.biobase.bits\:genepatternmodules\:60014\:2.1.
+LSID=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00412
 author=Barbara Hill;Broad Institute, Guy Bottu;VIB BioinformaticsCore
 categories=RNA-seq
 commandLine=/htseq_count/htseqcount_input_detect_and_sort.py --htseqcount htseq-count --input <input.files> <sample.names> --gtf <GTF.file> --strand <strandedness> --minqual <min.qual> --mode <mode> --nonunique <count.nonunique> --secondary <count.secondary> --supplementary <count.supplementary> --featuretype <feature.type> --idtype <id.type> <gene.name> --output <output.file> --outformat <output.format>
@@ -12,7 +12,7 @@ fileFormat=bam;sam
 language=Python
 name=HTSeq.Count
 os=any
-job.docker.image=genepattern/htseq_count:newwrapper
+job.docker.image=genepattern/htseq_count:0.4
 
 p1_MODE=IN
 p1_TYPE=FILE
