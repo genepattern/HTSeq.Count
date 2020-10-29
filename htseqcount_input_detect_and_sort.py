@@ -102,8 +102,8 @@ print("Original command line was " + orig_cmd)
 # Make new command line with sorted_input
 # & file_extension converted to the default value for format on the new command line,
 # using list comprehension
-new_cmd = '/htseq_count/htseq_count_wrapper.pl --htseq-count --input input.files.list ' + generate_command() + " " + ' '.join(map(str, sys.argv[5:]))
-print("this is the " + new_cmd)
+new_cmd = 'perl /htseq_count/htseq_count_wrapper.pl --htseqcount htseq-count --input input.files.list ' + generate_command() + " " + ' '.join(map(str, sys.argv[5:]))
+print("this is the new command: " + new_cmd)
 
 childProcess = subprocess.Popen(new_cmd, shell=True, env=os.environ, stdout=PIPE, stderr=PIPE)
 stdout, stderr = childProcess.communicate()
