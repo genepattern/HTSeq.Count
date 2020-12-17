@@ -1,0 +1,30 @@
+#
+# Example job ran successfully with v. 0.10 on gpbeta server
+# Took about 45 seconds to complete (run to end)
+#
+# The data, both in and out, and parameters came from the htseq Git repo test
+# https://github.com/htseq/htseq/releases/tag/release_0.12.3
+#
+name: HTSeq.Count nightly test - basic input from HTSeq Git
+module: "HTSeq.Count"
+params:
+    input.files: "https://github.com/simon-anders/htseq/blob/master/example_data/yeast_RNASeq_excerpt_withNH.sam, https://github.com/simon-anders/htseq/blob/master/example_data/yeast_RNASeq_excerpt_withNH.sam"
+    sample.names: ""
+    GTF.file: "https://github.com/simon-anders/htseq/blob/master/example_data/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz"
+    strandedness: "forward"
+    min.qual: 10
+    mode: "intersection-nonempty"
+    count.nonunique: "no"
+    count.secondary: "yes"
+    count.supplementary: "yes"
+    feature.type: "exon"
+    id.type: "gene_id"
+    gene.name: "gene_name"
+    output.file: "bamfile_no_qualities.HTSeq.counts"
+    output.format: "raw HTSeq format"
+assertions:
+        jobStatus: success
+        files:
+            bamfile_no_qualities.HTSeq.counts:
+                #not sure this works with a url...
+                diff: https://github.com/simon-anders/htseq/blob/master/example_data/yeast_RNASeq_excerpt_withNH_counts_twocolumns.tsv

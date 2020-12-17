@@ -9,11 +9,9 @@ name: HTSeq.Count nightly test - basic input from HTSeq Git
 module: "HTSeq.Count"
 params:
     input.files: "input/HTSeqGit/bamfile_no_qualities.bam"
-    input.format: "BAM"
     sample.names: ""
     GTF.file: "input/HTSeqGit/bamfile_no_qualities.gtf"
     strandedness: "forward"
-    sorting.order: "by name"
     min.qual: 10
     mode: "union"
     count.nonunique: "no"
