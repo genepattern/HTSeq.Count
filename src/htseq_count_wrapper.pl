@@ -125,5 +125,5 @@ if ($options{outformat} eq 'gct') {
   }
   close IN;
   close OUT;
-  unlink 'TMP_OUTPUT', $options{input};
+  unlink 'TMP_OUTPUT';
 }

@@ -110,4 +110,5 @@ if retval != 0:
     print(stdout)
     print(stderr, file=sys.stderr)
 
+os.remove("input.files.list")
 sys.exit(retval)
