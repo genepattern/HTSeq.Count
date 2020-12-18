@@ -110,5 +110,9 @@ if retval != 0:
     print(stdout)
     print(stderr, file=sys.stderr)
 
-os.remove("input.files.list")
+if os.path.exists("input.files.list"):
+  os.remove("input.files.list")
+else:
+  print("The file does not exist")
+
 sys.exit(retval)
