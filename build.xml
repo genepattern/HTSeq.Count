@@ -5,7 +5,8 @@
     <target name="create-zip" depends="init">
         <antcall target="prezip" />
         <zip destfile="${dest.dir}/${ant.project.name}.zip" whenempty="fail" defaultexcludes="true">
-            <fileset dir="." includes="manifest, readme.txt, paramgroups.json, htseq_count_doc.html, Dockerfile, htseq_count_wrapper.pl, htseqcount_input_detect_and_sort.py" />
+            <fileset dir="." includes="manifest, readme.txt, paramgroups.json, htseq_count_doc.html, Dockerfile" />
+            <fileset dir="src" includes="htseq_count_wrapper.pl, htseqcount_input_detect_and_sort.py" />
         </zip>
         <antcall target="postzip" />
     </target>
