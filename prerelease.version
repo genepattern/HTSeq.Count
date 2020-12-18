@@ -1,3 +1,5 @@
+#updated after building 0.38
+#Fri, 18 Dec 2020 14:09:42 -0500
 #updated after building 0.37
 #Fri, 18 Dec 2020 11:22:58 -0500
 #updated after building 0.36
@@ -71,5 +73,5 @@
 #prerelease version number
 #Tue, 03 Jun 2014 13:31:32 -0400
 #Thu Mar 22 12:30:21 EDT 2012
-prerelease.number=38
+prerelease.number=39
 
