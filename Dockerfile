@@ -8,5 +8,3 @@ COPY src/htseqcount_input_detect_and_sort.py /htseq_count/htseqcount_input_detec
 COPY src/htseq_count_wrapper.pl /htseq_count/htseq_count_wrapper.pl
 
 ENTRYPOINT []
-
- 
