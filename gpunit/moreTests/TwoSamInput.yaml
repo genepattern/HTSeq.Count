@@ -20,7 +20,7 @@ params:
     feature.type: "exon"
     id.type: "gene_id"
     gene.name: "gene_name"
-    output.file: "east_RNASeq_excerpt_withNH_counts_twocolumns.tsv"
+    output.file: "yeast_RNASeq_excerpt_withNH_counts_twocolumns.tsv"
     output.format: "raw HTSeq format"
 assertions:
         jobStatus: success
