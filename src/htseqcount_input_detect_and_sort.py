@@ -31,8 +31,8 @@ def generate_command():
                 try:
                     pysam.quickcheck("-v", alignfile)
                 except:
-                    print("One or more files is not intact. See below for more information")
-                    sys.exit()
+                    print(sys.exec_info()[0])
+                    print(alignfile + 'is incorrectly formatted or truncated')
                 else:
                     print("quickcheck okay")
                     print('alignfile = ' + alignfile)
