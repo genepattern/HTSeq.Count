@@ -32,7 +32,8 @@ def generate_command():
                     pysam.quickcheck("-v", alignfile)
                 except:
                     print("One or more files is not intact. See below for more information")
-                    exit()
+                    #exit() - works but doesn't pass the error
+                    break
                 else:
                     print("quickcheck okay")
                     print('alignfile = ' + alignfile)
