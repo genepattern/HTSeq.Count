@@ -31,8 +31,9 @@ def generate_command():
                 try:
                     pysam.quickcheck("-v", alignfile)
                 except:
-                    print(sys.exec_info()[0])
+                    #print(sys.exec_info()[0]) this threw a non-zero error, but also complained that exec_info was unknonw? see job 65488
                     print(alignfile + 'is incorrectly formatted or truncated')
+                    sys.exit(1)
                 else:
                     print("quickcheck okay")
                     print('alignfile = ' + alignfile)
