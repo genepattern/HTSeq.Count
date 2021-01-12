@@ -36,7 +36,7 @@ def generate_command():
                     #print(alignfile + ' is incorrectly formatted or truncated') >>> this just goes to stdout
                     raise ValueError(alignfile + ' is incorrectly formatted or truncated')
                     #not sure that I need sys.exit here - given raise
-                    sys.exit(1)
+                    #sys.exit(1)
                 else:
                     print("quickcheck okay")
                     print('alignfile = ' + alignfile)
