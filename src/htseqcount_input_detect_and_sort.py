@@ -33,8 +33,8 @@ def generate_command():
                 except Exception:
                     #not sure about line 33
                     #print(sys.exec_info()[0]) this threw a non-zero error, but also complained that exec_info was unknonw? see job 65488
-                    #print(alignfile + ' is incorrectly formatted or truncated') >>> this just goes to stdout
-                    raise ValueError(alignfile + ' is incorrectly formatted or truncated')
+                    print(alignfile + "" is incorrectly formatted or truncated. See stderr for details."")
+                    #raise ValueError(alignfile + ' is incorrectly formatted or truncated')
                     #not sure that I need sys.exit here - given raise
                     #sys.exit(1)
                 else:
