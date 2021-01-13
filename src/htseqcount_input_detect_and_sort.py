@@ -33,10 +33,10 @@ def generate_command():
                 basename = os.path.splitext(alignfile)[0]
                 # exts = [os.path.splitext(alignfile)[1]]
                 # basename = os.path.splitext(alignfile)[0]
-                print("The ext of " + alignfile + "is " + ext)
+                print("The ext of " + alignfile + " is " + ext)
                 exts.append(ext)
                 print(exts)
-                return ext
+                # return ext
 
             ele = exts[0]
             print(exts[0])
