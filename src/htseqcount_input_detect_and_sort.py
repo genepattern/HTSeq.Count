@@ -76,9 +76,9 @@ def generate_command():
                         basename + "_nameSort" + "." + file_format,
                         "-n",
                         alignfile)
-                except:
-                    #Solve this one later - try raise here later..etc 
-                    print(pysam.sort.getMessage())
+                except Exception:
+                    print("There was an error sorting " + alignfile + " See stderr for details")
+                    raise
                 else:
                     print("sorted")
                     sorted_input = basename + "_nameSort" + "." + file_format
