@@ -31,10 +31,9 @@ def generate_command():
                 try:
                     pysam.quickcheck("-v", alignfile)
                 except Exception:
-                    #not sure about line 33
-                    #print(sys.exec_info()[0]) this threw a non-zero error, but also complained that exec_info was unknonw? see job 65488
                     print(alignfile + " is incorrectly formatted or truncated. See stderr for details.")
                     #raise ValueError(alignfile + ' is incorrectly formatted or truncated')
+                    raise
                     #not sure that I need sys.exit here - given raise
                     #sys.exit(1)
                 else:
@@ -78,7 +77,7 @@ def generate_command():
                         "-n",
                         alignfile)
                 except:
-                    print(pysam.sort.getMessage())
+                    #print(pysam.sort.getMessage()) - figure out another way to throw this error
                 else:
                     print("sorted")
                     sorted_input = basename + "_nameSort" + "." + file_format
