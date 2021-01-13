@@ -24,27 +24,13 @@ def generate_command():
             content = [alignfile.strip() for alignfile in content]
             print("content = " + str(content))
 
-            # check to see if input appears to be intact & print files names that don't pass to stdout
-            # !does not read the middle of the file! see samtools doc for more information
-            print("running samtools quickcheck")
+            # file extension check/format detection this can be removed in a future version when
+            # htseq-count no longer requires a parameter it is ignoring...
             for alignfile in content:
-                try:
-                    pysam.quickcheck("-v", alignfile)
-                except Exception:
-                    print(alignfile + " is incorrectly formatted or truncated. See stderr for details.")
-                    #raise ValueError(alignfile + ' is incorrectly formatted or truncated')
-                    raise
-                    #not sure that I need sys.exit here - given raise
-                    #sys.exit(1)
-                else:
-                    print("quickcheck okay")
-                    print('alignfile = ' + alignfile)
-
-                # file extension check/format detection this can be removed in a future version when
-                # htseq-count no longer requires a parameter it is ignoring...
                 print("determining file extension")
                 exts = [os.path.splitext(alignfile)[1]]
                 basename = os.path.splitext(alignfile)[0]
+                print("All exts = " + str(exts))
                 ele = exts[0]
                 print(exts[0])
 
@@ -66,10 +52,28 @@ def generate_command():
                         buff.write(u"--format ")
                         buff.write(file_format)
 
+            # check to see if input appears to be intact & print files names that don't pass to stdout
+            # !does not read the middle of the file! see samtools doc for more information
+            for alignfile in content:
+                print("running samtools quickcheck")
+                try:
+                    pysam.quickcheck("-v", alignfile)
+                except Exception:
+                    print(alignfile + " is incorrectly formatted or truncated. See stderr for details.")
+                    #raise ValueError(alignfile + ' is incorrectly formatted or truncated')
+                    raise
+                    #not sure that I need sys.exit here - given raise
+                    #sys.exit(1)
+                else:
+                    print("quickcheck okay")
+                    print('alignfile = ' + alignfile)
+
+            for alignfile in content:
                 print("name sorting input")
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
-                global sorted_input
+                #global sorted_input - don't think I need this now?
+                sorted_alignfiles = []
                 try:
                     pysam.sort(
                         "-o",
@@ -82,11 +86,16 @@ def generate_command():
                 else:
                     print("sorted")
                     sorted_input = basename + "_nameSort" + "." + file_format
-                    buff.write(u" --order name")
-                    print(sorted_input)
+                    sorted_alignfiles.append(sorted_input)
+                    #do I need to move this out an indent?
+                return sorted_alignfiles
+                print("All sorted files = " + str(sorted_alignfiles))
+                buff.write(u" --order name")
 
-            all_inputs = [sorted_input]
-            print("These are all the sorted inputs " + str(all_inputs))
+
+            #all_inputs = [sorted_input]
+            #print("These are all the sorted inputs " + str(all_inputs))
+            #print("These are all the sorted inputs " + str(sorted_alignfiles))
 
             # write the sorted files back into the expected GP file list
             f = open("input.files.list", "w")
