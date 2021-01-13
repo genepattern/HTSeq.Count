@@ -26,36 +26,44 @@ def generate_command():
 
             # file extension check/format detection this can be removed in a future version when
             # htseq-count no longer requires a parameter it is ignoring...
+            exts = []
             for alignfile in content:
                 print("determining file extension")
-                exts = [os.path.splitext(alignfile)[1]]
+                ext = os.path.splitext(alignfile)[1]
                 basename = os.path.splitext(alignfile)[0]
-                print("All exts = " + str(exts))
-                ele = exts[0]
-                print(exts[0])
+                # exts = [os.path.splitext(alignfile)[1]]
+                # basename = os.path.splitext(alignfile)[0]
+                print("The ext of " + alignfile + "is " + ext)
+                exts.append(ext)
+                print(exts)
+                return ext
 
-                # check that all extensions are the same
-                check = True
+            ele = exts[0]
+            print(exts[0])
 
-                for x in exts:
-                    if ele != x:
-                        check = False
-                        print("Files are not of the same format")
-                        break
+            # check that all extensions are the same
+            check = True
 
-                    elif check:
-                        print("All extensions are the same")
-                        global file_format
-                        file_extension = exts[0]
-                        file_format = file_extension.replace(".", "")
-                        print("input format is " + file_format)
-                        buff.write(u"--format ")
-                        buff.write(file_format)
+            for x in exts:
+                if ele != x:
+                    check = False
+                    print("Files are not of the same format")
+                    break
+
+                elif check:
+                    print("All extensions are the same")
+                    global file_format
+                    file_extension = exts[0]
+                    file_format = file_extension.replace(".", "")
+                    print("input format is " + file_format)
+                    buff.write(u"--format ")
+                    buff.write(file_format)
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
             # !does not read the middle of the file! see samtools doc for more information
             for alignfile in content:
                 print("running samtools quickcheck")
+                print('alignfile = ' + alignfile)
                 try:
                     pysam.quickcheck("-v", alignfile)
                 except Exception:
@@ -66,7 +74,6 @@ def generate_command():
                     #sys.exit(1)
                 else:
                     print("quickcheck okay")
-                    print('alignfile = ' + alignfile)
 
             for alignfile in content:
                 print("name sorting input")
@@ -87,7 +94,7 @@ def generate_command():
                     print("sorted")
                     sorted_input = basename + "_nameSort" + "." + file_format
                     sorted_alignfiles.append(sorted_input)
-                    #do I need to move this out an indent?
+                    # do I need to move this out an indent?
                 return sorted_alignfiles
                 print("All sorted files = " + str(sorted_alignfiles))
                 buff.write(u" --order name")
