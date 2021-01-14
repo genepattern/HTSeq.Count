@@ -49,7 +49,6 @@ def generate_command():
                     check = False
                     print("Files are not of the same format")
                     break
-
                 elif check:
                     global file_format
                     file_extension = exts[0]
@@ -58,7 +57,7 @@ def generate_command():
                     buff.write(u"--format ")
                     buff.write(file_format)
 
-                print("All extensions are the same")
+            print("All extensions are the same")
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
             # !does not read the middle of the file! see samtools doc for more information
@@ -76,13 +75,14 @@ def generate_command():
                 else:
                     print("quickcheck okay")
 
+            sorted_alignfiles = []
             for alignfile in content:
-                print("name sorting input")
+                print("sort Debug: content = " + str(content))
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
                 #global sorted_input - don't think I need this now?
-                sorted_alignfiles = []
                 try:
+                    print("name sorting input")
                     pysam.sort(
                         "-o",
                         basename + "_nameSort" + "." + file_format,
