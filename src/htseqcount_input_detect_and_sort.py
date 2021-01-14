@@ -51,13 +51,14 @@ def generate_command():
                     break
 
                 elif check:
-                    print("All extensions are the same")
                     global file_format
                     file_extension = exts[0]
                     file_format = file_extension.replace(".", "")
                     print("input format is " + file_format)
                     buff.write(u"--format ")
                     buff.write(file_format)
+
+                print("All extensions are the same")
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
             # !does not read the middle of the file! see samtools doc for more information
@@ -94,21 +95,19 @@ def generate_command():
                     print("sorted")
                     sorted_input = basename + "_nameSort" + "." + file_format
                     sorted_alignfiles.append(sorted_input)
-                    # do I need to move this out an indent?
-                return sorted_alignfiles
                 print("All sorted files = " + str(sorted_alignfiles))
                 buff.write(u" --order name")
+                #return sorted_alignfiles
 
+                #all_inputs = [sorted_input]
+                #print("These are all the sorted inputs " + str(all_inputs))
+                #print("These are all the sorted inputs " + str(sorted_alignfiles))
 
-            #all_inputs = [sorted_input]
-            #print("These are all the sorted inputs " + str(all_inputs))
-            #print("These are all the sorted inputs " + str(sorted_alignfiles))
-
-            # write the sorted files back into the expected GP file list
-            f = open("input.files.list", "w")
-            for ele in all_inputs:
-                f.write(ele + '\n')
-            f.close()
+                # write the sorted files back into the expected GP file list
+                f = open("input.files.list", "w")
+                for ele in sorted_alignfiles:
+                    f.write(ele + '\n')
+                f.close()
 
             return buff.getvalue()
 
