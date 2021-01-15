@@ -37,13 +37,15 @@ def generate_command():
             # check that all extensions are the same
             check = True
             for x in exts:
-                if ele != x:
-                    print("Alignment files are not of the same format")
-                    raise ValueError('Alignment files are not of the same format.')
-                elif check:
-                    global file_format
-                    file_extension = exts[0]
-                    file_format = file_extension.replace(".", "")
+                try:
+                    if ele != x:
+                        print("Alignment files are not of the same format")
+                        raise ValueError('Alignment files are not of the same format.')
+                    elif check:
+                        global file_format
+                        file_extension = exts[0]
+                        file_format = file_extension.replace(".", "")
+                finally:
                     print("input format is " + file_format)
 
             buff.write(u"--format ")
@@ -96,6 +98,7 @@ def generate_command():
 # get the original command line
 orig_cmd = str(sys.argv[1:])
 print("Original command line was " + orig_cmd)
+
 
 # Make new command line with sorted_input
 # & file_extension converted to the default value for format on the new command line,
