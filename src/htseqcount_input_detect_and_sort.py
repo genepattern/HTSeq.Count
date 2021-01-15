@@ -121,5 +121,6 @@ if retval != 0:
     print(stderr, file=sys.stderr)
 
 # os.remove("input.files.list")
-os.remove("*_nameSort")
+for file in glob.glob("*_nameSort"):
+    os.remove(file)
 sys.exit(retval)
