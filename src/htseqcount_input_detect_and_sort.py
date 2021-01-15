@@ -35,18 +35,16 @@ def generate_command():
 
             ele = exts[0]
             # check that all extensions are the same
-            check = True
+            # check = True
             for x in exts:
-                try:
-                    if ele != x:
-                        print("Alignment files are not of the same format")
-                        check = False
-                    elif check:
-                        global file_format
-                        file_extension = exts[0]
-                        file_format = file_extension.replace(".", "")
-                except Exception:
+                if ele != x:
+                    print("Alignment files are not of the same format")
+                    # check = False
                     raise ValueError('Alignment files are not of the same format.')
+                else:
+                    global file_format
+                    file_extension = exts[0]
+                    file_format = file_extension.replace(".", "")
 
             buff.write(u"--format ")
             buff.write(file_format)
