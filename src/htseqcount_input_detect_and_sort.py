@@ -40,17 +40,18 @@ def generate_command():
                 try:
                     if ele != x:
                         print("Alignment files are not of the same format")
-                        raise ValueError('Alignment files are not of the same format.')
+                        check = False
                     elif check:
                         global file_format
                         file_extension = exts[0]
                         file_format = file_extension.replace(".", "")
-                finally:
-                    print("input format is " + file_format)
+                except Exception:
+                    raise ValueError('Alignment files are not of the same format.')
 
             buff.write(u"--format ")
             buff.write(file_format)
             print("all extensions are the same")
+            print("input format is " + file_format)
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
             # !does not read the middle of the file! see samtools doc for more information
