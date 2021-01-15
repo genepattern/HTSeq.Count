@@ -7,7 +7,6 @@ from subprocess import PIPE
 import sys
 
 import pysam
-import glob
 
 
 def generate_command():
@@ -44,7 +43,7 @@ def generate_command():
 
             for x in exts:
                 if ele != x:
-                    check = False
+                    # check = False
                     print("Files are not of the same format")
                     break
                 elif check:
@@ -121,6 +120,6 @@ if retval != 0:
     print(stderr, file=sys.stderr)
 
 # os.remove("input.files.list")
-for file in glob.glob("*_nameSort"):
+for file in sorted_alignfiles:
     os.remove(file)
 sys.exit(retval)
