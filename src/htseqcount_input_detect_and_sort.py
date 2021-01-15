@@ -32,20 +32,14 @@ def generate_command():
                 ext = os.path.splitext(alignfile)[1]
                 print("The ext of " + alignfile + " is " + ext)
                 exts.append(ext)
-                print(exts)
-                # return ext
 
             ele = exts[0]
-            print(exts[0])
-
             # check that all extensions are the same
             check = True
-
             for x in exts:
                 if ele != x:
-                    # check = False
-                    print("Files are not of the same format")
-                    break
+                    print("Alignment files are not of the same format")
+                    raise ValueError('Alignment files are not of the same format.')
                 elif check:
                     global file_format
                     file_extension = exts[0]
@@ -54,7 +48,7 @@ def generate_command():
 
             buff.write(u"--format ")
             buff.write(file_format)
-            print("All extensions are the same")
+            print("all extensions are the same")
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
             # !does not read the middle of the file! see samtools doc for more information
@@ -88,7 +82,7 @@ def generate_command():
                     sorted_input = tail + "_nameSort" + "." + file_format
                     sorted_alignfiles.append(sorted_input)
 
-            print("All sorted files = " + str(sorted_alignfiles))
+            print("all sorted files = " + str(sorted_alignfiles))
             buff.write(u" --order name")
 
             # write the sorted files back into the expected GP file list
