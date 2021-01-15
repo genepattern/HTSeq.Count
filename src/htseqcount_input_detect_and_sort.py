@@ -108,11 +108,11 @@ def generate_command():
                 #print("These are all the sorted inputs " + str(all_inputs))
                 #print("These are all the sorted inputs " + str(sorted_alignfiles))
 
-                # write the sorted files back into the expected GP file list
-                f = open("input.files.list", "w")
-                for ele in sorted_alignfiles:
-                    f.write(ele + '\n')
-                f.close()
+            # write the sorted files back into the expected GP file list
+            f = open("input.files.list", "w")
+            for ele in sorted_alignfiles:
+                f.write(ele + '\n')
+            f.close()
 
             return buff.getvalue()
 
