@@ -53,9 +53,9 @@ def generate_command():
                     file_extension = exts[0]
                     file_format = file_extension.replace(".", "")
                     print("input format is " + file_format)
-                    buff.write(u"--format ")
-                    buff.write(file_format)
 
+            buff.write(u"--format ")
+            buff.write(file_format)
             print("All extensions are the same")
 
             # check to see if input appears to be intact & print files names that don't pass to stdout
@@ -100,8 +100,8 @@ def generate_command():
                     sorted_alignfiles.append(sorted_input)
                     print("SORT DEBUG: sorted_alignfiles = " + str(sorted_alignfiles))
 
-                print("All sorted files = " + str(sorted_alignfiles))
-                buff.write(u" --order name")
+            print("All sorted files = " + str(sorted_alignfiles))
+            buff.write(u" --order name")
                 #return sorted_alignfiles
 
                 #all_inputs = [sorted_input]
