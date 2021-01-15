@@ -14,7 +14,7 @@ GenePattern - HTSeq.Count documentation
 <body>
 <h1>HTSeq.Count</h1>
 <h2>Summary</h2>
-Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format (usually with exon annotation), name sorts it/them and calculates
+Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format (usually with exon annotation), name sorts the alignment file(s) and calculates
 for each sample the number of reads mapping to each feature. Can optionally produce output in GCT format.
 
 <h2>Description</h2>
@@ -70,7 +70,7 @@ The following figure illustrates the effect of these three modes:
   <td></td>
 </tr><tr>
   <td>GTF file*</td>
-  <td>A GTF or GFF file containing a list of gene model annotations.</td>
+  <td>A GTF or GFF file containing a list of gene model annotations.<em>This file can be gzipped.</em></td>
   <td>selection from dynamic list or valid file</td>
   <td></td>
 </tr><tr>
@@ -197,7 +197,7 @@ Please <a href="https://genepattern.org/help" target="_blank">post in the GenePa
 <tr><td>1</td><td>2016-07-15</td><td>for htseq-count of HTSeq 0.6.1p2</td></tr>
 <tr><td>2</td><td>2018-02-22</td><td>for htseq-count of HTSeq 0.9.1, allows multiple input files</td></tr>
 <tr><td>2.1</td><td>2019-08-26</td><td>for htseq-count of HTSeq 0.11.1, uses Python 3 and has other defaults</td></tr>
-<tr><td>3.0</td><td>2020-10-31</td><td>Dockerized version of the module using biocontainers/htseq:v0.11.2-1-deb-py3_cv1</td></tr>
+<tr><td>3.0</td><td>2020-10-31</td><td>Dockerized version of the module using biocontainers/htseq:v0.11.2-1-deb-py3_cv1, and adding python wrapper to detect format of and name sort alignment files.</td></tr>
 </table>
 
 </body>
