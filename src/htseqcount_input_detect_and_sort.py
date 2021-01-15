@@ -7,6 +7,7 @@ from subprocess import PIPE
 import sys
 
 import pysam
+import glob
 
 
 def generate_command():
@@ -30,8 +31,6 @@ def generate_command():
             for alignfile in content:
                 print("determining file extension")
                 ext = os.path.splitext(alignfile)[1]
-                # exts = [os.path.splitext(alignfile)[1]]
-                # basename = os.path.splitext(alignfile)[0]
                 print("The ext of " + alignfile + " is " + ext)
                 exts.append(ext)
                 print(exts)
@@ -67,24 +66,16 @@ def generate_command():
                     pysam.quickcheck("-v", alignfile)
                 except Exception:
                     print(alignfile + " is incorrectly formatted or truncated. See stderr for details.")
-                    #raise ValueError(alignfile + ' is incorrectly formatted or truncated')
                     raise
-                    #not sure that I need sys.exit here - given raise
-                    #sys.exit(1)
                 else:
                     print("quickcheck okay")
 
-            sorted_alignfiles = []
             for alignfile in content:
-                print("SORT DEBUG: content = " + str(content))
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
-                #global sorted_input - don't think I need this now?
                 try:
-                    print("name sorting input")
-                    print("SORT DEBUG: alignfile = " + alignfile)
+                    print("name sorting " + alignfile)
                     tail = os.path.split(alignfile)[1]
-                    # sorted_input = pysam.sort("-o", "_nameSort" + "." + file_format, "-n", alignfile)
                     pysam.sort(
                        "-o",
                        tail + "_nameSort" + "." + file_format,
@@ -96,17 +87,10 @@ def generate_command():
                 else:
                     print("sorted")
                     sorted_input = tail + "_nameSort" + "." + file_format
-                    print("SORT DEBUG: sorted_input = " + sorted_input)
                     sorted_alignfiles.append(sorted_input)
-                    print("SORT DEBUG: sorted_alignfiles = " + str(sorted_alignfiles))
 
             print("All sorted files = " + str(sorted_alignfiles))
             buff.write(u" --order name")
-                #return sorted_alignfiles
-
-                #all_inputs = [sorted_input]
-                #print("These are all the sorted inputs " + str(all_inputs))
-                #print("These are all the sorted inputs " + str(sorted_alignfiles))
 
             # write the sorted files back into the expected GP file list
             f = open("input.files.list", "w")
@@ -116,7 +100,6 @@ def generate_command():
 
             return buff.getvalue()
 
-
 # get the original command line
 orig_cmd = str(sys.argv[1:])
 print("Original command line was " + orig_cmd)
@@ -124,6 +107,7 @@ print("Original command line was " + orig_cmd)
 # Make new command line with sorted_input
 # & file_extension converted to the default value for format on the new command line,
 # using list comprehension
+sorted_alignfiles = []
 new_cmd = 'perl /htseq_count/htseq_count_wrapper.pl --htseqcount htseq-count --input input.files.list ' \
           + generate_command() + " " + ' '.join(map(str, sys.argv[5:]))
 print("this is the new command: " + new_cmd)
@@ -137,4 +121,5 @@ if retval != 0:
     print(stderr, file=sys.stderr)
 
 # os.remove("input.files.list")
+os.remove("*_nameSort")
 sys.exit(retval)
