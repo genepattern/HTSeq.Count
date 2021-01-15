@@ -77,12 +77,14 @@ def generate_command():
 
             sorted_alignfiles = []
             for alignfile in content:
-                print("sort Debug: content = " + str(content))
+                print("SORT DEBUG: content = " + str(content))
                 # samtools sort [-l level] [-m maxMem] [-o out.bam] [-O format]
                 # [-n] [-t tag] [-T tmpprefix] [-@ threads] [in.sam|in.bam|in.cram]
                 #global sorted_input - don't think I need this now?
                 try:
                     print("name sorting input")
+                    print("SORT DEBUG: alignfile = " + alignfile)
+                    basename = os.path.splitext(alignfile)[0]
                     pysam.sort(
                         "-o",
                         basename + "_nameSort" + "." + file_format,
@@ -93,8 +95,11 @@ def generate_command():
                     raise
                 else:
                     print("sorted")
+                    print("SORT DEBUG: sorted_input = " + sorted_input)
                     sorted_input = basename + "_nameSort" + "." + file_format
                     sorted_alignfiles.append(sorted_input)
+                    print("SORT DEBUG: sorted_alignfiles = " + str(sorted_alignfiles))
+                    
                 print("All sorted files = " + str(sorted_alignfiles))
                 buff.write(u" --order name")
                 #return sorted_alignfiles
