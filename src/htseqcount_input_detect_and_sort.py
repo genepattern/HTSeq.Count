@@ -30,7 +30,6 @@ def generate_command():
             for alignfile in content:
                 print("determining file extension")
                 ext = os.path.splitext(alignfile)[1]
-                basename = os.path.splitext(alignfile)[0]
                 # exts = [os.path.splitext(alignfile)[1]]
                 # basename = os.path.splitext(alignfile)[0]
                 print("The ext of " + alignfile + " is " + ext)
@@ -84,19 +83,19 @@ def generate_command():
                 try:
                     print("name sorting input")
                     print("SORT DEBUG: alignfile = " + alignfile)
-                    # basename = os.path.splitext(alignfile)[0]
-                    sorted_input = pysam.sort("-o", "_nameSort" + "." + file_format, "-n", alignfile)
-                   # pysam.sort(
-                       # "-o",
-                       # basename + "_nameSort" + "." + file_format,
-                       # "-n",
-                       # alignfile)
+                    tail = os.path.split(alignfile)[1]
+                    # sorted_input = pysam.sort("-o", "_nameSort" + "." + file_format, "-n", alignfile)
+                    pysam.sort(
+                       "-o",
+                       tail + "_nameSort" + "." + file_format,
+                       "-n",
+                       alignfile)
                 except Exception:
                     print("There was an error sorting " + alignfile + " See stderr for details")
                     raise
                 else:
                     print("sorted")
-                    # sorted_input = basename + "_nameSort" + "." + file_format
+                    sorted_input = tail + "_nameSort" + "." + file_format
                     print("SORT DEBUG: sorted_input = " + sorted_input)
                     sorted_alignfiles.append(sorted_input)
                     print("SORT DEBUG: sorted_alignfiles = " + str(sorted_alignfiles))
@@ -125,7 +124,8 @@ print("Original command line was " + orig_cmd)
 # Make new command line with sorted_input
 # & file_extension converted to the default value for format on the new command line,
 # using list comprehension
-new_cmd = 'perl /htseq_count/htseq_count_wrapper.pl --htseqcount htseq-count --input input.files.list ' + generate_command() + " " + ' '.join(map(str, sys.argv[5:]))
+new_cmd = 'perl /htseq_count/htseq_count_wrapper.pl --htseqcount htseq-count --input input.files.list ' \
+          + generate_command() + " " + ' '.join(map(str, sys.argv[5:]))
 print("this is the new command: " + new_cmd)
 
 childProcess = subprocess.Popen(new_cmd, shell=True, env=os.environ, stdout=PIPE, stderr=PIPE)
