@@ -84,18 +84,19 @@ def generate_command():
                 try:
                     print("name sorting input")
                     print("SORT DEBUG: alignfile = " + alignfile)
-                    basename = os.path.splitext(alignfile)[0]
-                    pysam.sort(
-                        "-o",
-                        basename + "_nameSort" + "." + file_format,
-                        "-n",
-                        alignfile)
+                    # basename = os.path.splitext(alignfile)[0]
+                    sorted_input = pysam.sort("-o", "_nameSort" + "." + file_format, "-n", alignfile)
+                   # pysam.sort(
+                       # "-o",
+                       # basename + "_nameSort" + "." + file_format,
+                       # "-n",
+                       # alignfile)
                 except Exception:
                     print("There was an error sorting " + alignfile + " See stderr for details")
                     raise
                 else:
                     print("sorted")
-                    sorted_input = basename + "_nameSort" + "." + file_format
+                    # sorted_input = basename + "_nameSort" + "." + file_format
                     print("SORT DEBUG: sorted_input = " + sorted_input)
                     sorted_alignfiles.append(sorted_input)
                     print("SORT DEBUG: sorted_alignfiles = " + str(sorted_alignfiles))
