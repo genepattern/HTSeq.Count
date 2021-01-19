@@ -115,7 +115,7 @@ if retval != 0:
     print(stdout)
     print(stderr, file=sys.stderr)
 
-# os.remove("input.files.list")
+os.remove("input.files.list")
 for file in sorted_alignfiles:
     os.remove(file)
 sys.exit(retval)
