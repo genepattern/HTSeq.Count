@@ -163,10 +163,20 @@ The output file ends with summary lines that for each sample count :
 </table>
 <p>
 If you request the Excel output format the module will add a header with the sample name on top of each column with read counts.
+</p>
+<p>
   If you request <a href="https://www.genepattern.org/file-formats-guide#GCT" target="_blank">GCT</a>
-  the module will format the output file accordingly, and will redirect the summary lines to <b><span class="terminal">stdout.txt</span></b>.
-<br>
-Example output files can be found in the module <a href="https://github.com/genepattern/HTSeq.Count/tree/develop/gpunit/output" target="_blank">Git repository.</a>
+  the module will format the output file accordingly, and will redirect the summary lines to <b><span class="terminal">stdout.txt</span></b>.<br>
+  <em><b>NOTE:</b> In this beta release of HTSeq.count GCT file output is missing the column count in the second line of the file.
+  As a work-around you can edit the file manually, or send your count output to MergeHTSeqCounts for conversion to GCT.</em>
+</p>
+<p>
+  If you have separate .count files output from multiple runs of HTSeq.Count, you can use the GenePattern module,
+  MergeHTSeqCounts to combine those files into a single GCT output file.
+</p>
+<p>
+  Example output files can be found in the module <a href="https://github.com/genepattern/HTSeq.Count/tree/develop/gpunit/output" target="_blank">Git repository.</a>
+</p>
 
 <h2>Notes</h2>
 HTSeq.Count was originally wrapped as a GenePattern module by the staff of <a href="https://www.bits.vib.be/" target="_blank">VIB BioinformaticsCore</a>,
