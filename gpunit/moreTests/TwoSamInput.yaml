@@ -8,7 +8,7 @@
 name: HTSeq.Count nightly test - basic input from HTSeq Git
 module: "HTSeq.Count"
 params:
-    input.files: "input/HTSeqGit/yeast_RNASeq_excerpt_withNH.sam, input/HTSeqGit/yeast_RNASeq_excerpt_withNH_copy.sam"
+    input.files: ["input/HTSeqGit/yeast_RNASeq_excerpt_withNH.sam","input/HTSeqGit/yeast_RNASeq_excerpt_withNH_copy.sam"]
     sample.names: ""
     GTF.file: "input/HTSeqGit/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz"
     strandedness: "forward"
