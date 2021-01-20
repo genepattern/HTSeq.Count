@@ -63,6 +63,7 @@ if ($options{outformat} ne 'htseq') {
       $_ =~ s/^.*\///;
       $_ =~ s/\.[sb]am$//i;
       $nameslist .= "\t$_";
+      $Nnames++;
     }
     close IN;
   }
