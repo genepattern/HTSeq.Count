@@ -1,3 +1,5 @@
+#updated after building 0.40
+#Thu, 21 Jan 2021 10:38:15 -0500
 #updated after building 0.39
 #Tue, 05 Jan 2021 17:26:53 -0500
 #updated after building 0.38
@@ -75,5 +77,5 @@
 #prerelease version number
 #Tue, 03 Jun 2014 13:31:32 -0400
 #Thu Mar 22 12:30:21 EDT 2012
-prerelease.number=40
+prerelease.number=41
 
