@@ -5,10 +5,10 @@ g/TR/html4/loose.dtd">
 <title>
 GenePattern - HTSeq.Count documentation
 </title>
-<style type="text/css"><!--
+<style>
   h1 {text-align: center}
-  span.terminal {font-family: Courier}
---></style>
+  span.terminal {font-family: courier}
+</style>
 </head>
 
 <body>
@@ -17,13 +17,23 @@ GenePattern - HTSeq.Count documentation
 Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format (usually with exon annotation), name sorts the alignment file(s) and calculates
 for each sample the number of reads mapping to each feature. Can optionally produce output in GCT format.
 
-<h2>Authors</h2>
-Guy Bottu, <a href="https://www.bits.vib.be/" target="_blank">VIB BioinformaticsCore</a>; Barbara Hill, <a href="https://genepattern.org" target="_blank">GenePattern Team</a>
+<h2>Authorship</h2>
 <p>
-htseq-count is a Python script, distributed together with the HTSeq Python library developed by Simon Anders at EMBL Heidelberg.
-  This module uses HTSeq v0.11.2 via the biocontainers HTSeq.count image <a href="https://hub.docker.com/layers/biocontainers/htseq/v0.11.2-1-deb-py3_cv1/images/sha256-8a26acdb5f03f32d42b2542e2c83353b1d3c72b3745d2661f389c004601fce5d?context=explore" target="_blank">biocontainers/htseq:v0.11.2-1-deb-py3_cv1</a>.
+  <a href="http://htseq.readthedocs.io/" target="_blank">htseq-count</a> is a Python script, distributed together with the HTSeq Python library developed by Simon Anders at EMBL Heidelberg.<br>
+  This module uses HTSeq v0.11.2 via the biocontainers HTSeq.count image
+  <a href="https://hub.docker.com/layers/biocontainers/htseq/v0.11.2-1-deb-py3_cv1/images/sha256-8a26acdb5f03f32d42b2542e2c83353b1d3c72b3745d2661f389c004601fce5d?context=explore" target="_blank">biocontainers/htseq:v0.11.2-1-deb-py3_cv1</a>.<br>
+HTSeq.Count was originally wrapped as a GenePattern module by the staff of <a href="https://www.bits.vib.be/" target="_blank">VIB BioinformaticsCore</a>,
+and then "Dockerized" by the GenePattern team for use on Docker enabled GenePattern servers.<br>
+GenePattern Module wrapping: Barbara Hill, <a href="https://genepattern.org" target="_blank">GenePattern Team</a>; Guy Bottu, <a href="https://www.bits.vib.be/" target="_blank">VIB BioinformaticsCore</a>
+</p>
 
-<h2>CONTACT</h2>
+
+<h2>References</h2>
+<ol>
+<li>Anders S, Pyl PT, Huber W : HTSeq--a Python framework to work with high-throughput sequencing data. Bioinformatics 31(2), 166-169 (2015) <a href="http://www.ncbi.nlm.nih.gov/pubmed/25260700" target="_blank">PubMed 25260700</a>
+</ol>
+
+<h2>Contact</h2>
 Please <a href="https://genepattern.org/help" target="_blank">post in the GenePattern Forum</a> for assistance with this module.
 
 <h2>Links</h2>
@@ -190,15 +200,6 @@ If you request the Excel output format the module will add a header with the sam
 <p>
   Example output files can be found in the module <a href="https://github.com/genepattern/HTSeq.Count/tree/develop/gpunit/output" target="_blank">Git repository.</a>
 </p>
-
-<h2>Notes</h2>
-HTSeq.Count was originally wrapped as a GenePattern module by the staff of <a href="https://www.bits.vib.be/" target="_blank">VIB BioinformaticsCore</a>,
-and then "Dockerized" by the GenePattern team for use on our cloud-based servers.
-
-<h2>References</h2>
-<ol>
-<li>Anders S, Pyl PT, Huber W : HTSeq--a Python framework to work with high-throughput sequencing data. Bioinformatics 31(2), 166-169 (2015) <a href="http://www.ncbi.nlm.nih.gov/pubmed/25260700" target="_blank">PubMed 25260700</a>
-</ol>
 
 <h2>Version Comments</h2>
 <table>
