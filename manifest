@@ -13,6 +13,7 @@ language=Python
 name=HTSeq.Count
 os=any
 job.docker.image=genepattern/htseq_count:0.5
+src.repo=https://github.com/genepattern/HTSeq.Count/releases/tag/v0.40
 
 p1_MODE=IN
 p1_TYPE=FILE
