@@ -5,7 +5,7 @@
 # The data, both in and out, and parameters came from the htseq Git repo test
 # https://github.com/htseq/htseq/releases/tag/release_0.12.3
 #
-name: HTSeq.Count nightly test - basic input from HTSeq Git
+name: HTSeq.Count - Two sam input
 module: "HTSeq.Count"
 params:
     input.files: ["input/HTSeqGit/yeast_RNASeq_excerpt_withNH.sam","input/HTSeqGit/yeast_RNASeq_excerpt_withNH_copy.sam"]
