@@ -12,8 +12,8 @@ fileFormat=bam;sam
 language=Python
 name=HTSeq.Count
 os=any
-job.docker.image=genepattern/htseq_count:debug
-src.repo=https://github.com/genepattern/HTSeq.Count/releases/tag/v0.41
+job.docker.image=genepattern/htseq_count:0.6
+src.repo=https://github.com/genepattern/HTSeq.Count/releases/tag/v3.0
 
 p1_MODE=IN
 p1_TYPE=FILE
