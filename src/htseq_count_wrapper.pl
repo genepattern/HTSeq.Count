@@ -102,11 +102,11 @@ if ($options{outformat} eq 'gct') {
   open OUT, ">$options{output}.gct";
   print OUT "#1.2\n";
   print OUT "$Nlines\t$Nnames\n";
-  print OUT 'gene ID';
+  print OUT 'Name';
   if ($extratable) {
     print OUT "\t${extratable_header}";
   } else {
-    print OUT "\tdummy";
+    print OUT "\tDescription";
   }
   print OUT "$nameslist\n";
   open IN, 'TMP_OUTPUT';
