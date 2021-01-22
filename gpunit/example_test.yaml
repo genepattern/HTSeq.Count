@@ -26,5 +26,5 @@ params:
 assertions:
         jobStatus: success
         files:
-            KnownGood_bamfile_no_qualities.HTSeq.counts:
+            bamfile_no_qualities.HTSeq.counts:
                 diff: output/HTSeqGit/KnownGood_bamfile_no_qualities.HTSeq.counts
