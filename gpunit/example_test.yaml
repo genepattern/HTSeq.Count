@@ -5,7 +5,7 @@
 # The data, both in and out, and parameters came from the htseq Git repo test 
 # https://github.com/htseq/htseq/releases/tag/release_0.12.3
 #
-name: HTSeq.Count nightly test - basic input from HTSeq Git
+name: HTSeq.Count nightly test
 module: "HTSeq.Count"
 params:
     input.files: "input/HTSeqGit/bamfile_no_qualities.bam"
@@ -22,8 +22,9 @@ params:
     gene.name: "" 
     output.file: "bamfile_no_qualities.HTSeq.counts"
     output.format: "raw HTSeq format"
+
 assertions:
         jobStatus: success
         files:
-            bamfile_no_qualities.HTSeq.counts:
+            KnownGood_bamfile_no_qualities.HTSeq.counts:
                 diff: output/HTSeqGit/KnownGood_bamfile_no_qualities.HTSeq.counts
