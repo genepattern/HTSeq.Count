@@ -25,5 +25,5 @@ params:
 assertions:
         jobStatus: success
         files:
-            east_RNASeq_excerpt_withNH_counts_twocolumns.tsv:
+            yeast_RNASeq_excerpt_withNH_counts_twocolumns.tsv:
                 diff: input/HTSeqGit/yeast_RNASeq_excerpt_withNH_counts_twocolumns.tsv
