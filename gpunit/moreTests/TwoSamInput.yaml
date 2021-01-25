@@ -1,0 +1,29 @@
+#
+# Example job ran successfully with v. 0.39 on gpbeta server
+# Took about 45 seconds to complete (run to end)
+#
+# The data, both in and out, and parameters came from the htseq Git repo test
+# https://github.com/htseq/htseq/releases/tag/release_0.12.3
+#
+name: HTSeq.Count - Two sam input
+module: "HTSeq.Count"
+params:
+    input.files: ["input/HTSeqGit/yeast_RNASeq_excerpt_withNH.sam","input/HTSeqGit/yeast_RNASeq_excerpt_withNH_copy.sam"]
+    sample.names: ""
+    GTF.file: "input/HTSeqGit/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz"
+    strandedness: "forward"
+    min.qual: 10
+    mode: "intersection-nonempty"
+    count.nonunique: "no"
+    count.secondary: "yes"
+    count.supplementary: "yes"
+    feature.type: "exon"
+    id.type: "gene_id"
+    gene.name: "gene_name"
+    output.file: "yeast_RNASeq_excerpt_withNH_counts_twocolumns_HTSeq.count"
+    output.format: "raw HTSeq format"
+assertions:
+        jobStatus: success
+        files:
+            yeast_RNASeq_excerpt_withNH_counts_twocolumns_HTSeq.count:
+                diff: input/HTSeqGit/yeast_RNASeq_excerpt_withNH_counts_twocolumns_HTSeq.count

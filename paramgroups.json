@@ -2,11 +2,11 @@
 { 
   name: "Basic",
   hidden: false,
-  parameters: [ "samtype", "stranded", "alignment.file", "feature.file", "output.file" ]
+  parameters: [ "input.files", "sample.names", "GTF.file", "strandedness", "output.file", "output.format" ]
 },
 { 
   name: "Advanced", 
   hidden: true,
-  parameters: [ "order", "minaqual", "feature.type", "id.attr", "mode", "samout", "quiet" ]
+  parameters: [ "min.qual", "mode", "count.nonunique", "count.secondary", "count.supplementary", "id.type", "gene.name", "feature.type" ]
 }
 ]
